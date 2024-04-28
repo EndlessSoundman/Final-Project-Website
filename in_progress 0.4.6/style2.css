@@ -1,0 +1,254 @@
+@keyframes lights {
+    0% {
+      color: hsl(230, 40%, 80%);
+      text-shadow:
+        0 0 1em hsla(320, 100%, 50%, 0.2),
+        0 0 0.125em hsla(320, 100%, 60%, 0.3),
+        -1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+        1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+    }
+    
+    30% { 
+      color: hsl(230, 80%, 90%);
+      text-shadow:
+        0 0 1em hsla(320, 100%, 50%, 0.5),
+        0 0 0.125em hsla(320, 100%, 60%, 0.5),
+        -0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+        0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+    }
+    
+    40% { 
+      color: hsl(230, 100%, 95%);
+      text-shadow:
+        0 0 1em hsla(320, 100%, 50%, 0.5),
+        0 0 0.125em hsla(320, 100%, 90%, 0.5),
+        -0.25em -0.125em 0.125em hsla(40, 100%, 60%, 0.2),
+        0.25em 0.125em 0.125em hsla(200, 100%, 60%, 0.4);
+    }
+    
+    70% {
+      color: hsl(230, 80%, 90%);
+      text-shadow:
+        0 0 1em hsla(320, 100%, 50%, 0.5),
+        0 0 0.125em hsla(320, 100%, 60%, 0.5),
+        0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+        -0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+    }
+    
+    100% {
+      color: hsl(230, 40%, 80%);
+      text-shadow:
+        0 0 1em hsla(320, 100%, 50%, 0.2),
+        0 0 0.125em hsla(320, 100%, 60%, 0.3),
+        1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+        -1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+    }
+  }
+  
+
+
+body {
+  margin: 0;
+  font: 100% / 1.5 Raleway, sans-serif;
+  color: hsl(230, 100%, 95%);
+  background: linear-gradient(135deg, hsl(230, 40%, 12%), hsl(230, 20%, 7%));
+  min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto; 
+}
+
+
+
+  
+  .centered-textbox {
+    border: 2px solid #ffffff;
+    padding: 20px;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  h2 {
+    margin: auto;
+    font-size: 3.5rem;
+    font-weight: 300;
+    animation: lights 5s 750ms linear infinite;
+  }
+  
+  .content {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 1000px;
+  }
+  
+  .image-box {
+    width: 50%;
+    text-align: center;
+  }
+  
+  .image-box img {
+    max-width: 50%; 
+    height: auto;
+  }
+  
+  
+  .text-box {
+    width: 50%;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .text-box p {
+    font-size: 20px; 
+}
+
+
+#fixed-image {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin-bottom: -890px; 
+}
+
+
+.scrollable-space {
+  height: 2000px; 
+}
+
+.element-to-scroll {
+  overflow: auto; 
+}
+
+
+.comments-box {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  color: #ffffff;
+  
+  font-size: 28px;
+  margin-top: 10px;
+  font-family: 'Fira Mono', monospace;
+  letter-spacing: normal; /* Adjusted */
+  flex-wrap: wrap; /* Changed from nowrap to wrap */
+  animation: glitch 1s linear infinite;
+  position: absolute;
+  bottom: -292px;
+  left: 0.5;
+  min-width: 300px; /* Example minimum width */
+  padding: 10px; /* Added padding */
+}
+
+.comments-box p {
+  margin: 0; /* Reset default margin for the <p> element */
+}
+
+@keyframes glitch {
+  2%, 64% {
+    transform: translate(2px, 0) skew(0deg);
+  }
+  4%, 60% {
+    transform: translate(-2px, 0) skew(0deg);
+  }
+  62% {
+    transform: translate(0, 0) skew(5deg);
+  }
+}
+
+.comments-box:before,
+.comments-box:after {
+  content: attr(title);
+  position: absolute;
+  left: 0;
+}
+
+.comments-box:before {
+  animation: glitchTop 1s linear infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+@keyframes glitchTop {
+  2%, 64% {
+    transform: translate(2px, -2px);
+  }
+  4%, 60% {
+    transform: translate(-2px, 2px);
+  }
+  62% {
+    transform: translate(13px, -1px) skew(-13deg);
+  }
+}
+
+.comments-box:after {
+  animation: glitchBottom 1.5s linear infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+@keyframes glitchBottom {
+  2%, 64% {
+    transform: translate(-2px, 0);
+  }
+  4%, 60% {
+    transform: translate(-2px, 0);
+  }
+  62% {
+    transform: translate(-22px, 5px) skew(21deg);
+  }
+}
+
+.webnots-information {
+  position: absolute;
+  top: 500px;
+  left: 50px;
+  width: 900px; /* Adjust width as necessary */
+  max-height: auto; /* Maximum height before scrolling */
+  overflow: auto; /* Adds scrollbar when content overflows */
+  padding: 10px; /* Adds space inside the box around the text */
+  line-height: 1.6; /* Increases line spacing */
+  text-align: justify; /* Justifies the text for better readability */
+
+
+
+
+/* GLOBAL STYLES */
+body {
+  background: #333;
+  padding-top: 5em;
+  display: flex;
+  justify-content: center;
+}
+
+/* DEMO-SPECIFIC STYLES */
+.webnots-information.webnots-notification-box p {
+  color: #fff;
+  font-family: monospace;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typewriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: typing 3.5s steps(30, end), blink-caret .5s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange }
+}
+
+
+
+
+}
